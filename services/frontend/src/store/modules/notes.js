@@ -17,7 +17,8 @@ const actions = {
   },
   async getNotes({commit}) {
     let {data} = await axios.get('notes');
-    commit('setNotes', data);
+    const filteredNotes = data.filter(note => note.gen !== null && note.gen !== undefined && note.gen.trim() !== '');
+    commit('setNotes', filteredNotes);
   },
   async viewNote({commit}, id) {
     let {data} = await axios.get(`note/${id}`);

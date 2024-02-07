@@ -5,6 +5,7 @@ import axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import CanvasJSChart from '@canvasjs/vue-charts';
 
 const app = createApp(App);
 
@@ -21,7 +22,7 @@ axios.interceptors.response.use(undefined, function (error) {
     }
   }
 });
-
+app.use(CanvasJSChart);
 app.use(router);
 app.use(store);
 app.mount("#app");

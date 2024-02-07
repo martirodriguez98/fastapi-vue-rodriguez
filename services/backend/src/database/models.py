@@ -1,5 +1,5 @@
 from tortoise import fields, models
-
+  
 
 class Users(models.Model):
     id = fields.IntField(pk=True)
@@ -12,11 +12,20 @@ class Users(models.Model):
 
 class Notes(models.Model):
     id = fields.IntField(pk=True)
-    title = fields.CharField(max_length=225)
-    content = fields.TextField()
+    # title = fields.CharField(max_length=225)
+    # content = fields.TextField()
+    patient_name = fields.CharField(max_length=225)
+    type = fields.IntField(default_value=0, null=True)
+    gen = fields.CharField(max_length=20, null=True)
     author = fields.ForeignKeyField("models.Users", related_name="note")
     created_at = fields.DatetimeField(auto_now_add=True)
     modified_at = fields.DatetimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.title}, {self.author_id} on {self.created_at}"
+        return f"{self.patient_name}, {self.author_id} on {self.created_at}"
+
+
+
+
+
+

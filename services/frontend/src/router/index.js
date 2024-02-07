@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import LoginView from '@/views/LoginView.vue';
-import DashboardView from '@/views/DashboardView.vue';
+import UploadView from '@/views/UploadView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import NoteView from '@/views/NoteView.vue';
 import EditNoteView from '@/views/EditNoteView.vue';
@@ -26,9 +26,9 @@ const routes = [
     component: LoginView,
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: DashboardView,
+    path: '/upload',
+    name: 'Upload',
+    component: UploadView,
     meta: { requiresAuth: true },
   },
   {

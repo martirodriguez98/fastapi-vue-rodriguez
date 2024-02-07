@@ -39,7 +39,7 @@ export default defineComponent({
     async submit() {
       try {
         await this.register(this.user);
-        this.$router.push('/dashboard');
+        this.$router.push('/upload');
       } catch (error) {
         throw 'Username already exists. Please try again.';
       }

@@ -1,8 +1,9 @@
 <template>
   <div v-if="note">
-    <p><strong>Title:</strong> {{ note.title }}</p>
-    <p><strong>Content:</strong> {{ note.content }}</p>
-    <p><strong>Author:</strong> {{ note.author.username }}</p>
+    <p><strong>Paciente:</strong> {{ note.patient_name }}</p>
+    <p><strong>Doctor:</strong> {{ note.author.username }}</p>
+    <p><strong>Tipo:</strong> {{ getTypeText(note.type) }}</p>
+    <p><strong>Gen:</strong> {{note.gen}} </p>
 
     <div v-if="user.id === note.author.id">
       <p><router-link :to="{name: 'EditNote', params:{id: note.id}}" class="btn btn-primary">Edit</router-link></p>
@@ -25,7 +26,7 @@ export default defineComponent({
       await this.viewNote(this.id);
     } catch (error) {
       console.error(error);
-      this.$router.push('/dashboard');
+      this.$router.push('/upload');
     }
   },
   computed: {
@@ -36,11 +37,25 @@ export default defineComponent({
     async removeNote() {
       try {
         await this.deleteNote(this.id);
-        this.$router.push('/dashboard');
+        this.$router.push('/upload');
       } catch (error) {
         console.error(error);
       }
-    }
+    }, 
+    getTypeText: function (type) {
+      switch (type) {
+        case 0:
+          return "Positivo";
+        case 1:
+          return "Negativo";
+        case 2:
+          return "Insuficiente";
+        case 3:
+          return "Cancelado";
+        default:
+          return "-";
+      }
+    },
   },
 });
 </script>

@@ -1,6 +1,6 @@
 from typing import Optional
 
-from tortoise import Tortoise
+from tortoise import Tortoise,fields
 
 
 def register_tortoise(
@@ -14,6 +14,8 @@ def register_tortoise(
         if generate_schemas:
             await Tortoise.generate_schemas()
 
+  
     @app.on_event("shutdown")
     async def close_orm():
         await Tortoise.close_connections()
+

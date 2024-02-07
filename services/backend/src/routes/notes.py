@@ -22,7 +22,6 @@ router = APIRouter()
 async def get_notes():
     return await crud.get_notes()
 
-
 @router.get(
     "/note/{note_id}",
     response_model=NoteOutSchema,
